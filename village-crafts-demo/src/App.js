@@ -1,21 +1,22 @@
 // src/App.js
 
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import ProductDetail from './pages/ProductDetail';
+import React, { lazy, Suspense } from 'react';
 
-const App = () => {
+// Lazy load ArtisanList component
+const ArtisanList = lazy(() => import('./components/ArtisanList'));
+const SignUp = lazy(() => import('./components/SignUp'));
+const SignIn = lazy(() => import('./components/SignIn'));
+
+function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/product/:id" component={ProductDetail} />
-      </Switch>
-    </Router>
+    <div className="App">
+      <Suspense fallback={<div>Loading...</div>}>
+        <SignUp />
+        <SignIn />
+        <ArtisanList />
+      </Suspense>
+    </div>
   );
-};
+}
 
 export default App;

@@ -1,19 +1,23 @@
-// src/firebase/firebaseConfig.js
+// firebase/firebaseConfig.js
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDjtV-Wh4wF09ahJvFOYwIgJW48ekJZGXw",
+  authDomain: "crafts---culture.firebaseapp.com",
+  projectId: "crafts---culture",
+  storageBucket: "crafts---culture.appspot.com",
+  messagingSenderId: "146393546062",
+  appId: "1:146393546062:web:9a6c30755a5cb00803b21f",
+  measurementId: "G-LM17CCBNTL"
 };
 
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const db = firebase.firestore();
+// Firebase services
+export const auth = getAuth(app);       // For Authentication
+export const db = getFirestore(app);    // For Firestore (Database)
